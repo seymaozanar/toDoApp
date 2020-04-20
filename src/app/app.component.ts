@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Model } from './model';
+import { Model,ToDoItem } from './model';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,13 @@ export class AppComponent {
    return this.model.user;
 
  }
- getItems(){
-   return this.model.items;
+ getItems(){              //gets the all items which are false
+   return this.model.items.filter(item=>!item.action);
+ }
+ addItem(value){
+   if(value!=""){
+
+    this.model.items.push(new ToDoItem(value,false));
+   }
  }
 }
