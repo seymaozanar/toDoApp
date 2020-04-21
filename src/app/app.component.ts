@@ -8,12 +8,17 @@ import { Model,ToDoItem } from './model';
 })
 export class AppComponent {
  model =new Model();
+ isDisplay=false;
  getName(){
    return this.model.user;
 
  }
- getItems(){              //gets the all items which are false
-   return this.model.items.filter(item=>!item.action);
+ getItems(){              
+  if(this.isDisplay){
+    return this.model.items;
+  }
+                          //gets the all items which are false
+  return this.model.items.filter(item=>!item.action);
  }
  addItem(value){
    if(value!=""){
